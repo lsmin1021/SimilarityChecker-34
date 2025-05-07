@@ -26,7 +26,6 @@ public:
 		return partialScore;
 	}
 	bool isMaxScore(int length1, int length2) {
-		if (length1 == length2) return true;
-		return false;
+		return length1 == length2;
 	}
 };
