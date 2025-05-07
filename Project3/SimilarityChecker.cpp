@@ -2,13 +2,15 @@
 using std::string;
 
 class SimChecker {
+private:
+	const int Perfect_Score_Legnth = 60;
 public:
 	int lengthCheck(string str1, string str2) {
 		int length1 = str1.length();
 		int length2 = str2.length();
-		
-		if (length1 == length2)
-			return 60;
+
+		if (isMaxScore(length1, length2))
+			return Perfect_Score_Legnth;
 
 		if (length2 > length1) {
 			int tmp;
@@ -22,5 +24,9 @@ public:
 				
 		double partialScore = (1 - (gap / length2)) * 60;
 		return partialScore;
+	}
+	bool isMaxScore(int length1, int length2) {
+		if (length1 == length2) return true;
+		return false;
 	}
 };
