@@ -4,8 +4,9 @@ using std::string;
 class SimChecker {
 public:
 	int check(string str1, string str2) {
-
-		return 60;
+		if(str1.length() == str2.length())
+			return 60;
+		return 0;
 	}
 
 
