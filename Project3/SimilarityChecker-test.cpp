@@ -2,7 +2,7 @@
 #include "SimilarityChecker.cpp"
 
 
-TEST(Ts, lengthChecker60) {
+TEST(LegnthCheck, SameLength) {
 	SimChecker checker;
 	
 	int expected = 60;
@@ -11,7 +11,7 @@ TEST(Ts, lengthChecker60) {
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(Ts, lengthChecker0) {
+TEST(LegnthCheck, ZeroScore) {
 	SimChecker checker;
 
 	int expected = 0;
@@ -20,7 +20,7 @@ TEST(Ts, lengthChecker0) {
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(Ts, lengthCheckerPartialScore) {
+TEST(LegnthCheck, PartialScore) {
 	SimChecker checker;
 
 	int expected = 20;
@@ -28,3 +28,13 @@ TEST(Ts, lengthCheckerPartialScore) {
 
 	EXPECT_EQ(expected, actual);
 }
+
+TEST(LegnthCheck, PartialScore2) {
+	SimChecker checker;
+
+	int expected = 30;
+	int actual = checker.lengthCheck("aa", "aae");
+
+	EXPECT_EQ(expected, actual);
+}
+
