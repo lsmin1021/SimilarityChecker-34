@@ -1,40 +1,28 @@
 #include "gmock/gmock.h"
 #include "SimilarityChecker.cpp"
 
-
-TEST(LegnthCheck, SameLength) {
+class SimCheckerTester : public testing::Test {
+public:
 	SimChecker checker;
-	
-	int expected = 60;
-	int actual = checker.lengthCheck("abc", "qwe");
+	void lengthCheck(string str1, string str2, int expected) {
+		int actual = checker.lengthCheck(str1, str2);
+		EXPECT_EQ(expected, actual);
+	}
+};
 
-	EXPECT_EQ(expected, actual);
+TEST_F(SimCheckerTester, LegnthCheckSameLength) {
+	lengthCheck("abc", "qwe", 60);
 }
 
-TEST(LegnthCheck, ZeroScore) {
-	SimChecker checker;
-
-	int expected = 0;
-	int actual = checker.lengthCheck("a", "bb");
-
-	EXPECT_EQ(expected, actual);
+TEST_F(SimCheckerTester, LegnthCheckZeroScore) {
+	lengthCheck("a", "bb" , 0);
 }
 
-TEST(LegnthCheck, PartialScore) {
-	SimChecker checker;
-
-	int expected = 20;
-	int actual = checker.lengthCheck("aaabb", "abb");
-
-	EXPECT_EQ(expected, actual);
+TEST_F(SimCheckerTester, LegnthCheckPartialScore) {
+	lengthCheck("aaabb", "abb", 20);
 }
 
-TEST(LegnthCheck, PartialScore2) {
-	SimChecker checker;
-
-	int expected = 30;
-	int actual = checker.lengthCheck("aa", "aae");
-
-	EXPECT_EQ(expected, actual);
+TEST_F(SimCheckerTester, LegnthCheckPartialScore2) {
+	lengthCheck("aa", "aae", 30);
 }
 
